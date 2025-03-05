@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 300px;
+      background: #0F0F0F;
+      font-family: 'Montserrat', sans-serif;
+      color: #FFFFFF;
+      margin: 0;
+      padding: 10px;
+    }
+    .header {
+      background: linear-gradient(to right, #333, #F7931A);
+      padding: 8px 12px;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .refresh {
+      cursor: pointer;
+    }
+    .refresh:hover {
+      animation: spin 0.5s linear;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    .fee-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+    }
+    .fee-card {
+      background: #252525;
+      width: 90px;
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .fee-card:hover {
+      transform: scale(1.05);
+      border: 1px solid #F7931A;
+    }
+    .fee-value {
+      color: #F7931A;
+      font-size: 28px;
+      margin: 8px 0;
+      animation: fadeIn 0.5s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .fee-unit {
+      color: #F7931A;
+      font-size: 12px;
+      margin-top: -4px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fee-time {
+      color: #BBB;
+      font-size: 12px;
+    }
+    .progress-circle {
+      color: #F7931A;
+    }
+    .footer {
+      border-top: 1px solid #F7931A;
+      padding: 8px 0;
+      font-size: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer .time {
+      color: #FFFFFF;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .footer a {
+      color: #F7931A;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span>₿ BTC Fee</span>
+    <span class="refresh">↻</span>
+  </div>
+  <div class="fee-container">
+    <div class="fee-card">
+      <div>Fast</div>
+      <div class="fee-value">
+        <span id="fast-fee">Loading...</span>
+        <span class="fee-unit">sat/vB</span>
+      </div>
+      <div class="fee-time"><span class="progress-circle">◔</span> ~10m</div>
+    </div>
+    <div class="fee-card">
+      <div>Normal</div>
+      <div class="fee-value">
+        <span id="normal-fee">Loading...</span>
+        <span class="fee-unit">sat/vB</span>
+      </div>
+      <div class="fee-time"><span class="progress-circle">◑</span> ~30m</div>
+    </div>
+    <div class="fee-card">
+      <div>Slow</div>
+      <div class="fee-value">
+        <span id="slow-fee">Loading...</span>
+        <span class="fee-unit">sat/vB</span>
+      </div>
+      <div class="fee-time"><span class="progress-circle">◕</span> ~2h</div>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="time" id="updated-time">⏱ Updated: Loading...</span>
+    <a href="https://mempool.space">mempool.space</a>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
